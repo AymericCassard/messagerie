@@ -1,8 +1,10 @@
+com/lajol/app/CitationDuJour.class
+com/lajol/metier/Citation.class
 com/lajol/metier/Entree.class
 com/lajol/metier/Contact.class
 com/lajol/app/AppClient.class
-com/lajol/metier/Entree$Request.class
 com/lajol/metier/Client.class
+com/lajol/metier/Entree$Request.class
 com/lajol/metier/Annuaire$1.class
 com/lajol/app/AppEntree.class
 com/lajol/metier/Annuaire$requestType.class

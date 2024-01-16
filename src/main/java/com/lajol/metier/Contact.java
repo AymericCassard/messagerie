@@ -1,12 +1,31 @@
 package com.lajol.metier;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Contact implements Serializable {
 
   private String nom;
   private String ip;
   private boolean isConnected;
+
+  public boolean isConnected() {
+    return isConnected;
+  }
+
+  public void setConnected(boolean connected) {
+    isConnected = connected;
+  }
+
+  public Date getDerniereConnection() {
+    return derniereConnection;
+  }
+
+  public void setDerniereConnection(Date derniereConnection) {
+    this.derniereConnection = derniereConnection;
+  }
+
+  private Date derniereConnection;
 
   public Contact(String nom, String ip) {
     this.nom = nom;

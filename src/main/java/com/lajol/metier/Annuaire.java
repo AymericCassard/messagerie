@@ -3,10 +3,10 @@ package com.lajol.metier;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class Annuaire {
 
@@ -84,7 +84,7 @@ public class Annuaire {
     		break;
     	default:
     		break;
-    }
+    	}
 	}
 
 	private void sendAskedContactInfo() {
@@ -97,6 +97,7 @@ public class Annuaire {
 			System.out.println(e);
 		}
 	}
+
 
 	private void setContactConnected() {
 		try {
