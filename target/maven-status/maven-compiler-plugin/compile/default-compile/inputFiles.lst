@@ -1,9 +1,9 @@
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/app/AppEntree.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/metier/Entree.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/metier/Client.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/app/AppClient.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/metier/Annuaire.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/metier/Citation.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/metier/Contact.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/app/CitationDuJour.java
-/home/major/Documents/Cours CNAM/application répartie/projet_chat/outerEntree/entree/src/main/java/com/lajol/app/AppAnnuaire.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/app/CitationDuJour.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/metier/Citation.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/app/AppEntree.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/metier/Contact.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/metier/Client.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/metier/Entree.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/app/AppAnnuaire.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/app/AppClient.java
+/home/acassard/Bureau/Cours/L3/appliReparti/outerEntree/messagerie/src/main/java/com/lajol/metier/Annuaire.java
