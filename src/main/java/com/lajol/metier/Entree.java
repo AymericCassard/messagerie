@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Entree {
 
@@ -27,6 +28,10 @@ public class Entree {
 	}
 
   //Connection with Client
+  private ArrayList<ServerSocket> serverSocketList;
+  private ArrayList<ServerThread> serverThreads;
+  private final int THREAD_PORT = 8002;
+
   private ServerSocket clientServerSocket;
   private Socket clientSocket;
   private ObjectOutputStream clientOutput;
@@ -37,18 +42,33 @@ public class Entree {
   private ObjectOutputStream annuaireOutput;
   private ObjectInputStream annuaireInput;
 
+  //Connection with Citation
+  private Socket citationSocket;
+  private ObjectOutputStream citationOutput;
+  private ObjectInputStream citationInput;
+
   public Entree(InetAddress addr) throws IOException {
     this.addr = addr;
     //initialize Connection with Annuaire
     this.annuaireSocket = new Socket(addr, 8000);
     this.annuaireOutput = new ObjectOutputStream(this.annuaireSocket.getOutputStream());
     this.annuaireInput = new ObjectInputStream(this.annuaireSocket.getInputStream());
+    //initialize Connection with Citation
+    this.citationSocket = new Socket(addr, 9000);
+    this.citationOutput = new ObjectOutputStream(this.citationSocket.getOutputStream());
+    this.citationInput = new ObjectInputStream(this.citationSocket.getInputStream());
     //MUST BE LAST
     //initialize Connection with Client
     this.clientServerSocket = new ServerSocket(8001);
-    this.clientSocket = clientServerSocket.accept();
-    this.clientInput = new ObjectInputStream(clientSocket.getInputStream());
-    this.clientOutput = new ObjectOutputStream(clientSocket.getOutputStream());
+    // this.serverSocketList = new ArrayList<>();
+    // for (int i = 0; i < 2; i++) {
+    //   this.serverSocketList.add(new ServerSocket((8001 + i), 1));
+    //   // System.out.println()
+    // }
+
+    // this.clientSocket = clientServerSocket.accept();
+    // this.clientInput = new ObjectInputStream(clientSocket.getInputStream());
+    // this.clientOutput = new ObjectOutputStream(clientSocket.getOutputStream());
   }
 
   public void shutdownAnnuaireConnection() throws IOException {
@@ -84,20 +104,28 @@ public class Entree {
     return (boolean) annuaireInput.readObject();
   }
 
-  public Contact processClientConnection() throws ClassNotFoundException, IOException {
-    String clientName = (String)clientInput.readObject();
-
-    //Returns null if client doesn't exist
-    Contact client = askAnnuaireForContact(clientName);
-    System.out.println(client.toString());
-    System.out.println(!(client == null));
-
-    //Si l'annuaire parvient à connecter le client, on renvoie
-    //Ok au client
-    boolean connectionStatus = askAnnuaireToConnect(client);
-    System.out.println(connectionStatus);
-    sendObject(connectionStatus, clientOutput);
-
-    return client;
+  public void manageClientConnection() throws IOException, ClassNotFoundException {
+    int i = 0;
+    while(true) {
+      int currentThreadPort = THREAD_PORT + i;
+      System.out.println(currentThreadPort);
+      clientSocket = clientServerSocket.accept();
+      clientInput = new ObjectInputStream(clientSocket.getInputStream());
+      clientOutput = new ObjectOutputStream(clientSocket.getOutputStream());
+      ServerThread serverThread = new ServerThread(
+        new ServerSocket(currentThreadPort),
+        this.annuaireOutput,
+        this.annuaireInput,
+        this.citationOutput,
+        this.citationInput,
+        i
+      );
+      serverThread.start();
+      sendObject(currentThreadPort,this.clientOutput);
+      boolean okSignal = (boolean)clientInput.readObject();
+      this.clientSocket.close();
+      i++;
+    }
   }
+ 
 }

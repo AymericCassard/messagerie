@@ -13,10 +13,10 @@ public class AppAnnuaire {
 
 	public static void main(String[] args) {
 		try {
-			CitationDuJour citationDuJour= new CitationDuJour();
-			Citation citation = new Citation();
-			citation = citationDuJour.obtenirCitationDuJour();
-			System.out.println(citation.getContent());
+			// CitationDuJour citationDuJour= new CitationDuJour();
+			// Citation citation = new Citation();
+			// citation = citationDuJour.obtenirCitationDuJour();
+			// System.out.println(citation.getContent());
 
 
 			Annuaire annuaire = new Annuaire();    

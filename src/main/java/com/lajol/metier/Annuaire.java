@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 
 public class Annuaire {
@@ -106,6 +107,7 @@ public class Annuaire {
 			for(Contact c : contactList) {
 				if(c.getNom().equals(toConnect.getNom())) {
 					c.setIsConnected(true);
+					c.setLastConnection(new Date());
 					System.out.println("asked to connect name in Loop = " + String.valueOf(c));
 					output.writeObject(true);
 					return;

@@ -15,10 +15,10 @@ public class AppEntree {
 	public static void main(String[] args) {
         try {
             Entree entree = new Entree(InetAddress.getLocalHost());
-            Contact admin = entree.processClientConnection();
+            entree.manageClientConnection();
             System.out.println("?");
-            entree.shutdownAnnuaireConnection();  
-        } catch(IOException | ClassNotFoundException  e) {
+            // entree.shutdownAnnuaireConnection();  
+        } catch(IOException | ClassNotFoundException e) {
             System.out.println(e);
         }
 	}

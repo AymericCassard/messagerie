@@ -8,6 +8,7 @@ public class Contact implements Serializable {
   private String nom;
   private String ip;
   private boolean isConnected;
+  private Date lastConnection;
 
   public boolean isConnected() {
     return isConnected;
@@ -17,20 +18,11 @@ public class Contact implements Serializable {
     isConnected = connected;
   }
 
-  public Date getDerniereConnection() {
-    return derniereConnection;
-  }
-
-  public void setDerniereConnection(Date derniereConnection) {
-    this.derniereConnection = derniereConnection;
-  }
-
-  private Date derniereConnection;
-
   public Contact(String nom, String ip) {
     this.nom = nom;
     this.ip = ip;
     this.isConnected = false;
+    this.lastConnection = null;
   }
 
   public String getNom() {
@@ -57,7 +49,16 @@ public class Contact implements Serializable {
     this.isConnected = isConnected;
   }
 
-  public String toString() {
-    return "Contact={" + " nom=" + this.nom + " / ip=" + this.ip +  " / isConnected=" + this.isConnected + " }";
+  public Date getLastConnection() {
+  	return lastConnection;
   }
+
+  public void setLastConnection(Date lastConnection) {
+  	this.lastConnection = lastConnection;
+  }
+
+  public String toString() {
+    return "Contact={" + " nom=" + this.nom + " / ip=" + this.ip +  " / isConnected=" + this.isConnected + " / lastConnection="  + " }";
+  }
+
 }
